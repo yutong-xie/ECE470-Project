@@ -1,0 +1,14 @@
+<!-- 2d_slam method -->
+<launch>
+	<arg name="open_rviz" default="true"/>
+
+	<!--spark slam-->
+  	<include file="$(find robot_slam)/launch/robot_hector.launch">
+    	<!--	<arg name="configuration_basename" value="$(arg configuration_basename)"/>   -->
+  	</include>
+
+	<!-- rviz -->
+  	<group if="$(arg open_rviz)"> 
+    		<node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find robot_slam)/rviz/gmapping.rviz"/>
+  	</group>
+</launch>
